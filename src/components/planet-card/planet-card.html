@@ -1,0 +1,71 @@
+<div class="col-md-4 col-sm-6 col-xs-12"><div class="panel panel-primary planet-panel">
+
+    <!-- PLANET HEADING -->
+    <div class="panel-heading clearfix">
+        <h3 class="panel-title">
+            <strong>
+                <!--[{{planet.coordinates[0]}}:{{planet.coordinates[1]}}:{{planet.coordinates[2]}}]-->
+                {{planet.name}}
+                <!--<span class="caret"></span>-->
+            </strong>
+            <div class="btn-group pull-right">
+                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                    <span class="glyphicon glyphicon-option-vertical"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Edit</a></li>
+                    <li><a href="#" ng-click="removePlanet($index)">Remove</a></li>
+                </ul>
+            </div>
+        </h3>
+    </div>
+
+    <!-- MINES -->
+    <div class="panel-body text-center">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-5">Metal mine: </label>
+                <div class="col-sm-3 col-xs-7">
+                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.metalMine">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-5">Crystal mine: </label>
+                <div class="col-sm-3 col-xs-7">
+                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.crystalMine">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-5">Deuterium mine: </label>
+                <div class="col-sm-3 col-xs-7">
+                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.deuteriumMine">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-5">Max temp: </label>
+                <div class="col-sm-3 col-xs-7">
+                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.maxTemp">
+                    <!--<p class="form-control-static input-sm text-center">{{planet.maxTemp}}</p>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PLANET PRODUCTION -->
+    <div class="panel-footer text-center">
+        <span class="col-xs-4">
+            <img src="img/metall.gif">
+            <br>Metal<br><strong>{{planet.getMetalProduction(player.plasmaLevel, player.geologist) | number}}</strong><br>
+        </span>
+        <span class="col-xs-4">
+            <img src="img/kristall.gif">
+            <br>Crystal<br><strong>{{planet.getCrystalProduction(player.plasmaLevel, player.geologist) | number}}</strong><br>
+        </span>
+        <span class="col-xs-4">
+            <img src="img/deuterium.gif">
+            <br>Deuterium<br><strong>{{planet.getDeuteriumProduction(player.plasmaLevel, player.geologist) | number}}</strong><br>
+        </span>
+        ... <!--This text is for the footer to wrap production spans-->
+    </div>
+
+</div></div>
