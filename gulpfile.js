@@ -58,13 +58,13 @@ gulp.task("build-dist", ["css", "js", "move-html", "move-img"], function(){
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(htmlmin({
-            empty: false,
+            empty: true,
             cdata: false,
             comments: false,
             conditionals: false,
             spare: false,
             quotes: false,
-            loose: false
+            loose: true
         }))
         .pipe(gulp.dest("./dist"))
 });
