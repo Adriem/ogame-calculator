@@ -1,7 +1,5 @@
 *.iml
 example/
-dist/
-
 
 #################
 ## Node Modules
