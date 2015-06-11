@@ -10,6 +10,8 @@ var gulp = require("gulp"),
     maps = require("gulp-sourcemaps"),
     rename = require("gulp-rename");
 
+
+
 /* IMG TASKS */
 gulp.task("move:img", function(){
     return gulp.src("./src/img/*")
@@ -55,17 +57,27 @@ gulp.task("coffee:dist", ["clean:js"], function() {
         .pipe(gulp.dest("dist/"))
 });
 
+/* HTML TASKS */
+gulp.task("clean:html", function(cb) {
+    del(['dist/**/*.html'], cb);
+});
+
+gulp.task("move:html", ["clean:html"], function(){
+    return gulp.src("src/**/*.html")
+        .pipe(gulp.dest("dist/"))
+});
+
 /* BUILD TASKS */
-gulp.task("build:dev", ["move:img", "css", "coffee:dev"], function(){
+gulp.task("build:dev", ["move:html", "move:img", "css", "coffee:dev"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
-    gulp.src("./src/**/*.html")
+    gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./dist"))
 });
 
-gulp.task("build:dist", [ "move:img", "css", "coffee:dist"], function(){
+gulp.task("build:dist", ["move:html", "move:img", "css", "coffee:dist"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
-    gulp.src("./src/**/*.html")
+    gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(htmlmin({
             empty: true,
