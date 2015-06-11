@@ -9,8 +9,7 @@ var gulp = require("gulp"),
     inject = require("gulp-inject"),
     maps = require("gulp-sourcemaps"),
     rename = require("gulp-rename");
-
-
+    open = require("gulp-open");
 
 /* IMG TASKS */
 gulp.task("move:img", function(){
@@ -75,7 +74,7 @@ gulp.task("build:dev", ["move:html", "move:img", "css", "coffee:dev"], function(
         .pipe(gulp.dest("./dist"))
 });
 
-gulp.task("build:dist", ["move:html", "move:img", "css", "coffee:dist"], function(){
+gulp.task("build", ["move:html", "move:img", "css", "coffee:dist"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
@@ -89,4 +88,12 @@ gulp.task("build:dist", ["move:html", "move:img", "css", "coffee:dist"], functio
             loose: true
         }))
         .pipe(gulp.dest("./dist"))
+});
+
+gulp.task("launch", ["build"], function() {
+    gulp.src("dist/index.html").pipe(open("", {url:"http://localhost:8080"}))
+});
+
+gulp.task("launch:dev", ["build:dev"], function() {
+    gulp.src("dist/index.html").pipe(open("", {url:"http://localhost:8080"}))
 });
