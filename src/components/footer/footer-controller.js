@@ -1,7 +1,0 @@
-module.directive('footer', function() {
-  return {
-    templateUrl: 'components/footer/footer.html'
-  };
-});
-
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImNvbXBvbmVudHMvZm9vdGVyL2Zvb3Rlci1jb250cm9sbGVyLmNvZmZlZSJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxNQUFNLENBQUMsU0FBUCxDQUFpQixRQUFqQixFQUEyQixTQUFBLEdBQUE7U0FDekI7QUFBQSxJQUFBLFdBQUEsRUFBYSwrQkFBYjtJQUR5QjtBQUFBLENBQTNCLENBQUEsQ0FBQSIsImZpbGUiOiJjb21wb25lbnRzL2Zvb3Rlci9mb290ZXItY29udHJvbGxlci5qcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyIsInNvdXJjZXNDb250ZW50IjpbIm1vZHVsZS5kaXJlY3RpdmUgJ2Zvb3RlcicsIC0+XHJcbiAgdGVtcGxhdGVVcmw6ICdjb21wb25lbnRzL2Zvb3Rlci9mb290ZXIuaHRtbCciXX0=

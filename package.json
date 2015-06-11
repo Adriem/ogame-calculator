@@ -12,6 +12,7 @@
   "author": "Adrian Moreno",
   "license": "GPL",
   "devDependencies": {
+    "del": "^1.2.0",
     "gulp": "^3.8.11",
     "gulp-coffee": "^2.3.1",
     "gulp-inject": "^1.2.0",

@@ -1,34 +1,28 @@
 /* GULP DEPENDENCIES */
 var gulp = require("gulp"),
+    del = require("del"),
     coffee = require("gulp-coffee"),
-    maps = require("gulp-sourcemaps"),
     uglify = require("gulp-uglify"),
-    rename = require("gulp-rename"),
     cssmin = require("gulp-minify-css"),
     htmlmin = require("gulp-minify-html"),
-    gutil = require("gulp-util"),
-    inject = require("gulp-inject");
+    util = require("gulp-util"),
+    inject = require("gulp-inject"),
+    maps = require("gulp-sourcemaps"),
+    rename = require("gulp-rename");
 
-/* GULP TASKS */
-gulp.task("coffee", function(){
-    gulp.src("src/**/*.coffee")
-        .pipe(maps.init())
-        .pipe(coffee({bare: true}).on('error', gutil.log))
-        .pipe(maps.write())
-        .pipe(gulp.dest("src/"))
+/* IMG TASKS */
+gulp.task("move:img", function(){
+    return gulp.src("./src/img/*")
+        .pipe(gulp.dest("./dist/img"))
 });
 
-gulp.task("js", ["coffee"], function(){
-    gulp.src("src/**/*.js")
-        .pipe(uglify({mangle:false}))
-        .pipe(rename({
-            extname: ".min.js"
-        }))
-        .pipe(gulp.dest("dist/"))
+/* CSS TASKS */
+gulp.task('clean:css', function (cb) {
+    del(['dist/**/*.css'], cb);
 });
 
-gulp.task("css", function(){
-    gulp.src("src/**/*.css")
+gulp.task("css", ["clean:css"], function(){
+    return gulp.src("src/**/*.css")
         .pipe(cssmin())
         .pipe(rename({
             extname: ".min.css"
@@ -36,26 +30,42 @@ gulp.task("css", function(){
         .pipe(gulp.dest("dist/"))
 });
 
-gulp.task("move-html", function(){
+/* COFFEESCRIPT TASKS */
+gulp.task('clean:js', function (cb) {
+    del(['dist/**/*.js'], cb);
+});
+
+gulp.task("coffee:dev", ["clean:js"], function() {
+    return gulp.src("src/**/*.coffee")
+        .pipe(maps.init())
+        .pipe(coffee({bare: true}).on('error', util.log))
+        .pipe(maps.write())
+        .pipe(gulp.dest("dist/"))
+});
+
+gulp.task("coffee:dist", ["clean:js"], function() {
+    return gulp.src("src/**/*.coffee")
+        .pipe(maps.init())
+        .pipe(coffee({bare: true}).on('error', util.log))
+        .pipe(uglify({mangle:false}))
+        .pipe(rename({
+            extname: ".min.js"
+        }).on('error', util.log))
+        .pipe(maps.write())
+        .pipe(gulp.dest("dist/"))
+});
+
+/* BUILD TASKS */
+gulp.task("build:dev", ["move:img", "css", "coffee:dev"], function(){
+    var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./src/**/*.html")
+        .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./dist"))
 });
 
-gulp.task("move-img", function(){
-    gulp.src("./src/img/*")
-        .pipe(gulp.dest("./dist/img"))
-});
-
-gulp.task("build-dev", ["coffee"], function(){
-    var sources = gulp.src(['./src/**/*.js', './src/**/*.css'], {read: false});
-    gulp.src("./src/**/*.html")
-        .pipe(inject(sources, {relative: true}))
-        .pipe(gulp.dest("./src"))
-});
-
-gulp.task("build-dist", ["css", "js", "move-html", "move-img"], function(){
+gulp.task("build:dist", [ "move:img", "css", "coffee:dist"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
-    gulp.src("./dist/**/*.html")
+    gulp.src("./src/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(htmlmin({
             empty: true,

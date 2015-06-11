@@ -1,4 +1,9 @@
-#footer a {
+.page-footer {
+    /*border-top:1px solid #999;*/
+    padding:20px !important;
+}
+
+.page-footer a {
     color: #477fd5;
-    margin: 0 5px;
+    padding: 0 5px;
 }
