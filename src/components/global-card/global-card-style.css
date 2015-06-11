@@ -13,6 +13,14 @@
     background-color: #44587d;
 }
 
+#global-params {
+    padding: 0px;
+}
+
+#global-params > .form-group {
+    padding: 0 5px;
+}
+
 .bottom-separator {
     padding-top: 0;
     padding-bottom: 10px;

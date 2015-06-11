@@ -66,25 +66,25 @@
             </div>
 
             <!-- Global parameters -->
-            <div class="form-inline col-xs-12" id="global-params">
-                <div class="form-group col-sm-9 col-xs-12">
+            <div class="form-inline" id="global-params">
+                <div class="form-group">
                     <label>Plasma level: </label>
                     <input type="number" class="form-control input-sm text-right" min="0" ng-model="player.plasmaLevel">
                 </div>
-                <div class="form-group col-sm-3 col-xs-8 pull-right">
+                <div class="form-group pull-right">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="shortenResults"> Shorten results
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group pull-right">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" ng-model="player.geologist"> Geologist
                         </label>
                     </div>
                 </div>
-                <!--<div class="form-group col-sm-3 col-xs-6 pull-right">-->
-                    <!--<div class="checkbox">-->
-                        <!--<label>-->
-                            <!--<input type="checkbox" ng-model="$scope.shortenResults"> Shorten results-->
-                        <!--</label>-->
-                    <!--</div>-->
-                <!--</div>-->
             </div>
 
         </div>
