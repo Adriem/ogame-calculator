@@ -1,9 +1,9 @@
 module.factory 'Account', (Planet) ->
 
-  Account = () ->
-    @plasmaLevel = 0
-    @geologist = false
-    @planets = []
+  Account = (plasmaLevel = 0, geologist = false, planets = []) ->
+    @plasmaLevel = plasmaLevel
+    @geologist = geologist
+    @planets = planets # This is not safe!
     null
 
   Account.prototype.addPlanet = (planet) ->
@@ -32,7 +32,14 @@ module.factory 'Account', (Planet) ->
       production += planet.getDeuteriumProduction(@plasmaLevel, @geologist)
     production
 
-  Account.prototype.serialize = ->
-
+  ### STATIC METHOD ###
+  Account.getFromJSON = (jsonObject) ->
+    if jsonObject?
+      new Account(
+        jsonObject.plasmaLevel,
+        jsonObject.geologist,
+        (Planet.getFromJSON(planet) for planet in jsonObject.planets)
+      )
+    else new Account()
 
   return Account

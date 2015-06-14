@@ -1,7 +1,7 @@
-module.directive 'globalCard', ->
-  templateUrl: 'components/global-card/global-card.html'
+module.directive "globalCard", ->
+  templateUrl: "components/global-card/global-card.html"
 
-module.controller "globalCardController", ($scope, Account) ->
+module.controller "globalCardController", ($scope) ->
 
   ### PARAMS ###
   $scope.shortenResults = true
@@ -33,4 +33,4 @@ module.controller "globalCardController", ($scope, Account) ->
     $scope.deuteriumProduction = $scope.player.getDeuteriumProduction()
   , true)
 
-  return null
+  return null # Avoid autoreturn

@@ -1,18 +1,24 @@
 module = angular.module("ogameCalculator", [])
 
-.controller "mainController", ($scope, Planet, Account) ->
+.controller "mainController", ($scope, Planet, AccountLoader) ->
+
+  PLAYER_KEY = "playerInfo"
 
   numPlanets = 0
+
+  #localStorage.setItem("testDummy", "HELLO LOCAL STORAGE")
+  #alert localStorage.getItem("testDummy2")
+  localStorage.clear()
 
   ### AUX ###
   $scope.editPlanet = undefined
 
   ### DATA ###
-  $scope.player = new Account()
+  $scope.player = AccountLoader.loadAccount(PLAYER_KEY)
 
   ### WATCHERS ###
   $scope.$watch("player", ->
-    console.log "Player changed!"
+    AccountLoader.storeAccount(PLAYER_KEY, $scope.player)
   , true)
 
   ### FUNCTIONS ###
