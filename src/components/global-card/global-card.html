@@ -1,5 +1,5 @@
 <div class="col-md-offset-3 col-md-6 col-xs-12">
-    <div class=" panel panel-primary">
+    <div class=" panel panel-primary" ng-controller="globalCardController">
 
         <!-- Headings -->
         <div class="panel-heading"><div class="row">
@@ -21,48 +21,48 @@
 
             <!-- Production -->
             <div class="bottom-separator row">
+                <!-- Metal -->
                 <div class="col-xs-4 text-center">
                     Hourly: <br class="visible-xs"><strong>
-                    {{getHourlyMetalProduction().value | number}}
-                    {{getHourlyMetalProduction().multiplier}}
+                    {{getValue(metalProduction) | number}}
+                    {{getMultiplier(metalProduction)}}
                 </strong><br>
                     Daily: <br class="visible-xs"><strong>
-                    {{getDailyMetalProduction().value | number}}
-                    {{getDailyMetalProduction().multiplier}}
+                    {{getValue(metalProduction * 24) | number}}
+                    {{getMultiplier(metalProduction * 24)}}
                 </strong><br>
                     Weekly: <br class="visible-xs"><strong>
-                    {{getWeeklyMetalProduction().value | number}}
-                    {{getWeeklyMetalProduction().multiplier}}
-                </strong><br>
-                </div>
+                    {{getValue(metalProduction * 24 * 7) | number}}
+                    {{getMultiplier(metalProduction * 24 * 7)}}
+                </strong><br></div>
+                <!-- Crystal -->
                 <div class="col-xs-4 text-center">
                     Hourly: <br class="visible-xs"><strong>
-                    {{getHourlyCrystalProduction().value | number}}
-                    {{getHourlyCrystalProduction().multiplier}}
+                    {{getValue(crystalProduction) | number}}
+                    {{getMultiplier(crystalProduction)}}
                 </strong><br>
                     Daily: <br class="visible-xs"><strong>
-                    {{getDailyCrystalProduction().value | number}}
-                    {{getDailyCrystalProduction().multiplier}}
+                    {{getValue(crystalProduction * 24) | number}}
+                    {{getMultiplier(crystalProduction * 24)}}
                 </strong><br>
                     Weekly: <br class="visible-xs"><strong>
-                    {{getWeeklyCrystalProduction().value | number}}
-                    {{getWeeklyCrystalProduction().multiplier}}
-                </strong><br>
-                </div>
+                    {{getValue(crystalProduction * 24 * 7) | number}}
+                    {{getMultiplier(crystalProduction * 24 * 7)}}
+                </strong><br></div>
+                <!-- Deuterium -->
                 <div class="col-xs-4 text-center">
                     Hourly: <br class="visible-xs"><strong>
-                    {{getHourlyDeuteriumProduction().value | number}}
-                    {{getHourlyDeuteriumProduction().multiplier}}
+                    {{getValue(deuteriumProduction) | number}}
+                    {{getMultiplier(deuteriumProduction)}}
                 </strong><br>
                     Daily: <br class="visible-xs"><strong>
-                    {{getDailyDeuteriumProduction().value | number}}
-                    {{getDailyDeuteriumProduction().multiplier}}
+                    {{getValue(deuteriumProduction * 24) | number}}
+                    {{getMultiplier(deuteriumProduction * 24)}}
                 </strong><br>
                     Weekly: <br class="visible-xs"><strong>
-                    {{getWeeklyDeuteriumProduction().value | number}}
-                    {{getWeeklyDeuteriumProduction().multiplier}}
-                </strong><br>
-                </div>
+                    {{getValue(deuteriumProduction * 24 * 7) | number}}
+                    {{getMultiplier(deuteriumProduction * 24 * 7)}}
+                </strong><br></div>
             </div>
 
             <!-- Global parameters -->
