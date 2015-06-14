@@ -9,7 +9,7 @@ In order to clone this repo and run it or modify it, you must follow these steps
 - `cd path/to/project/ogame-calculator`
 - `npm install`
 
-You will need to have [NodeJS and npm](https://docs.npmjs.com/getting-started/installing-node) installed
+You will need to have [node.js and npm](https://docs.npmjs.com/getting-started/installing-node) installed
 
 #### Build this project
 In case you made some modifications to the sources, you'll have to rebuild the project for the changes to take effect. You can use two different commands to build the project:

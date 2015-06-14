@@ -32,4 +32,7 @@ module.factory 'Account', (Planet) ->
       production += planet.getDeuteriumProduction(@plasmaLevel, @geologist)
     production
 
+  Account.prototype.serialize = ->
+
+
   return Account
