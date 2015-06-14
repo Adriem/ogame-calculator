@@ -6,10 +6,6 @@ module = angular.module("ogameCalculator", [])
 
   numPlanets = 0
 
-  #localStorage.setItem("testDummy", "HELLO LOCAL STORAGE")
-  #alert localStorage.getItem("testDummy2")
-  localStorage.clear()
-
   ### AUX ###
   $scope.editPlanet = undefined
 

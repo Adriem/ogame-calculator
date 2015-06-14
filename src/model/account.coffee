@@ -35,6 +35,7 @@ module.factory 'Account', (Planet) ->
   ### STATIC METHOD ###
   Account.getFromJSON = (jsonObject) ->
     if jsonObject?
+      console.log "Data loaded from previous session"
       new Account(
         jsonObject.plasmaLevel,
         jsonObject.geologist,
