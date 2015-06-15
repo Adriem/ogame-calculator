@@ -2,12 +2,12 @@ module = angular.module("ogameCalculator", [])
 
 .controller "mainController", ($scope, Planet, AccountLoader) ->
 
-  PLAYER_KEY = "playerInfo"
+  ### CONSTANTS ###
+  PLAYER_KEY = "playerInfo" # Key to store player info in local storage
 
-  numPlanets = 0
-
-  ### AUX ###
-  $scope.editPlanet = undefined
+  ### AUX VARIABLES FOR EDITING PLANETS' INFO ###
+  $scope.auxPlanet = new Planet()
+  editIndex = -1
 
   ### DATA ###
   $scope.player = AccountLoader.loadAccount(PLAYER_KEY)
@@ -19,12 +19,31 @@ module = angular.module("ogameCalculator", [])
 
   ### FUNCTIONS ###
   $scope.createPlanet = ->
-    $scope.player.addPlanet(new Planet("Planet #{++numPlanets}", [1,1,1], 50))
+    editIndex = -1
+    $scope.auxPlanet = new Planet("New Planet", [1,1,1], 50)
     null;
+
+  $scope.editPlanet = (index) ->
+    editIndex = index
+    planet = $scope.player.planets[index]
+    $scope.auxPlanet = new Planet(
+      planet.name,
+      [planet.coordinates[0],planet.coordinates[1],planet.coordinates[2]],
+      planet.maxTemp
+    )
+    null
+
+  $scope.savePlanet = () ->
+    if editIndex > 0
+      planet = $scope.player.planets[editIndex]
+      planet.name = $scope.auxPlanet.name
+      planet.coordinates = $scope.auxPlanet.coordinates
+      planet.maxTemp = $scope.auxPlanet.maxTemp
+    else $scope.player.addPlanet($scope.auxPlanet)
+    null
 
   $scope.removePlanet = (position) ->
     $scope.player.removePlanet(position, 1)
     null
 
   return null
-
