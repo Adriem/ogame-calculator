@@ -34,7 +34,7 @@ module = angular.module("ogameCalculator", [])
     null
 
   $scope.savePlanet = () ->
-    if editIndex > 0
+    if editIndex >= 0
       planet = $scope.player.planets[editIndex]
       planet.name = $scope.auxPlanet.name
       planet.coordinates = $scope.auxPlanet.coordinates
