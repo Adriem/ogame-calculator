@@ -23,6 +23,8 @@
 </head>
 <body data-ng-app="ogameCalculator" data-ng-controller="mainController">
 
+    <edit-dialog></edit-dialog>
+
     <!-- CONTENT -->
     <div class="container">
 
@@ -55,8 +57,10 @@
 
             <!-- ADD PLANET BUTTON -->
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <button class="btn btn-default btn-block"
-                        ng-click="createPlanet()">Add a planet</button>
+                <button class="btn btn-default btn-block"  data-toggle="modal"
+                        data-target="#editModal" ng-click="createPlanet()">
+                    Add a planet
+                </button>
             </div>
 
         </fieldset>
