@@ -3,7 +3,9 @@ module = angular.module("ogameCalculator", [])
 .controller "mainController", ($scope, Planet, AccountLoader) ->
 
   ### CONSTANTS ###
+  $scope.AMPLIFIER_LIST = Planet.amplifierList
   PLAYER_KEY = "playerInfo" # Key to store player info in local storage
+
 
   ### AUX VARIABLES FOR EDITING PLANETS' INFO ###
   $scope.auxPlanet = new Planet()
@@ -11,6 +13,7 @@ module = angular.module("ogameCalculator", [])
 
   ### DATA ###
   $scope.player = AccountLoader.loadAccount(PLAYER_KEY)
+  console.log $scope.player
 
   ### WATCHERS ###
   $scope.$watch("player", ->

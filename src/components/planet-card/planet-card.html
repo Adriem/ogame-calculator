@@ -6,7 +6,6 @@
             <strong>
                 [{{planet.coordinates[0]}}:{{planet.coordinates[1]}}:{{planet.coordinates[2]}}]
                 {{planet.name}}
-                <!--<span class="caret"></span>-->
             </strong>
             <div class="btn-group pull-right">
                 <a href="#" data-toggle="dropdown" aria-expanded="false">
@@ -20,32 +19,57 @@
         </h3>
     </div>
 
-    <!-- MINES -->
+    <!-- PLANET BODY -->
     <div class="panel-body text-center">
         <div class="form-horizontal">
-            <div class="form-group">
+            <!-- MINES -->
+            <div class="form-group mine-level">
                 <label class="control-label col-sm-7 col-xs-7">Metal mine: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.metalMine">
+                    <input type="number" class="form-control input-sm" min="0" ng-model="planet.metalMine">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mine-level">
                 <label class="control-label col-sm-7 col-xs-7">Crystal mine: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.crystalMine">
+                    <input type="number" class="form-control input-sm" min="0" ng-model="planet.crystalMine">
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mine-level">
                 <label class="control-label col-sm-7 col-xs-7">Deuterium mine: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.deuteriumMine">
+                    <input type="number" class="form-control input-sm" min="0" ng-model="planet.deuteriumMine">
+                </div>
+            </div>
+            <div class="form-group max-temp">
+                <label class="control-label col-sm-7 col-xs-7">Max. temperature: </label>
+                <div class="col-sm-3 col-xs-5">
+                    <p class="form-control-static text-left">{{planet.maxTemp}}</p>
+                </div>
+            </div>
+            <!-- AMPLIFIERS -->
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-7">Metal amplifier: </label>
+                <div class="col-sm-3 col-xs-5">
+                    <select class="form-control input-sm" ng-model="planet.metalBonus"
+                            ng-options="item.value as item.name for item in AMPLIFIER_LIST">
+                    </select>
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-sm-7 col-xs-7">Max. temperature: </label>
+                <label class="control-label col-sm-7 col-xs-7">Crystal amplifier: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <!--<input type="number" class="form-control input-sm text-right" min="0" ng-model="planet.maxTemp">-->
-                    <p class="form-control-static text-center">{{planet.maxTemp}}</p>
+                    <select class="form-control input-sm" ng-model="planet.crystalBonus"
+                            ng-options="item.value as item.name for item in AMPLIFIER_LIST">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-7 col-xs-7">Deuterium amplifier: </label>
+                <div class="col-sm-3 col-xs-5">
+                    <select class="form-control input-sm" ng-model="planet.deuteriumBonus"
+                            ng-options="item.value as item.name for item in AMPLIFIER_LIST">
+                    </select>
                 </div>
             </div>
         </div>
