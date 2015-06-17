@@ -8,6 +8,7 @@
 
 .planet-panel .panel-title {
     line-height: 28px;
+    cursor: move;
 }
 
 .planet-panel a {
@@ -23,4 +24,26 @@
 .planet-panel > .panel-footer > span {
     /*color: #fff;*/
     font-size: 10pt;
+}
+
+.mine-level .form-control, .max-temp .form-control-static {
+    padding-left: 5px;
+}
+
+.drag-over-greater .panel, .drag-over-lower .panel{
+    -webkit-box-shadow:  0 0 10px #222;
+    -moz-box-shadow:   0 0 10px #222;
+    box-shadow:  0 0 10px #222;
+}
+
+.drag-over-greater {
+    border-right: 3px solid #3178ee;
+}
+
+.drag-over-lower {
+    border-left: 3px solid #3178ee;
+}
+
+.dragging {
+    opacity: 0.4;
 }

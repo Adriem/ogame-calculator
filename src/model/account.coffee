@@ -14,6 +14,11 @@ module.factory 'Account', (Planet) ->
     @planets.splice(index, 1)
     null
 
+  Account.prototype.movePlanet = (startPos, finalPos) ->
+    auxPlanet = @planets[startPos]
+    @removePlanet(startPos)
+    @planets.splice(finalPos, 0, auxPlanet)
+
   Account.prototype.getMetalProduction = ->
     production = 0
     for planet in @planets
@@ -35,7 +40,7 @@ module.factory 'Account', (Planet) ->
   ### STATIC METHOD ###
   Account.getFromJSON = (jsonObject) ->
     if jsonObject?
-      console.log "Data loaded from previous session"
+      out.success "Data loaded successfully"
       new Account(
         jsonObject.plasmaLevel,
         jsonObject.geologist,

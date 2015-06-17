@@ -1,16 +1,31 @@
-module = angular.module("ogameCalculator", [])
+module = angular.module("ogameCalculator", []) # Module definition
+out =
+  verbose: (string) -> console.log "%c#{string}", "color: #BBB;"
+  log: (string) -> console.log string
+  debug: (string) -> console.log "%c#{string}", "color: #08D;"
+  success: (string) -> console.log "%c#{string}", "color: #0A0;"
+  warning: (string) -> console.log "%c#{string}", "color: #D70;"
+  error: (string) -> console.log "%c#{string}", "color: #D00;"
 
-.controller "mainController", ($scope, Planet, AccountLoader) ->
+module.controller "mainController", ($scope, Planet, AccountLoader) ->
 
   ### CONSTANTS ###
+  $scope.AMPLIFIER_LIST = Planet.amplifierList
   PLAYER_KEY = "playerInfo" # Key to store player info in local storage
 
   ### AUX VARIABLES FOR EDITING PLANETS' INFO ###
   $scope.auxPlanet = new Planet()
+  $scope.showModalDialog = false
   editIndex = -1
 
   ### DATA ###
   $scope.player = AccountLoader.loadAccount(PLAYER_KEY)
+  # Due to some changes in planets' properties, amplifiers may load incorrectly.
+  # This is a temporary fix that will prevent the page from crashing
+  for planet in $scope.player.planets
+    planet.metalAmplifier ?= 0
+    planet.crystalAmplifier ?= 0
+    planet.deuteriumAmplifier ?= 0
 
   ### WATCHERS ###
   $scope.$watch("player", ->
@@ -19,31 +34,33 @@ module = angular.module("ogameCalculator", [])
 
   ### FUNCTIONS ###
   $scope.createPlanet = ->
-    editIndex = -1
     $scope.auxPlanet = new Planet("New Planet", [1,1,1], 50)
-    null;
+    $scope.showModalDialog = true
+    editIndex = -1
 
   $scope.editPlanet = (index) ->
-    editIndex = index
     planet = $scope.player.planets[index]
     $scope.auxPlanet = new Planet(
       planet.name,
       [planet.coordinates[0],planet.coordinates[1],planet.coordinates[2]],
       planet.maxTemp
     )
-    null
+    $scope.showModalDialog = true
+    editIndex = index
 
   $scope.savePlanet = () ->
-    if editIndex > 0
+    if editIndex >= 0
       planet = $scope.player.planets[editIndex]
       planet.name = $scope.auxPlanet.name
       planet.coordinates = $scope.auxPlanet.coordinates
       planet.maxTemp = $scope.auxPlanet.maxTemp
     else $scope.player.addPlanet($scope.auxPlanet)
-    null
+
+  $scope.movePlanet = (startPos, finalPos) ->
+    out.success "Moving planet #{startPos} to #{finalPos}"
+    $scope.player.movePlanet(startPos, finalPos)
 
   $scope.removePlanet = (position) ->
     $scope.player.removePlanet(position, 1)
-    null
 
   return null
