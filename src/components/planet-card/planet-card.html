@@ -12,10 +12,10 @@
                     <span class="glyphicon glyphicon-option-vertical"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" ng-click="editPlanet(planetIndex)">Edit</a></li>
-                    <li><a href="#" ng-click="movePlanet(planetIndex, planetIndex-1)" ng-hide="planetIndex == 0">Move up</a></li>
-                    <li><a href="#" ng-click="movePlanet(planetIndex, planetIndex+1)" ng-hide="planetIndex == player.planets.length - 1">Move down</a></li>
-                    <li><a href="#" ng-click="removePlanet(planetIndex)">Remove</a></li>
+                    <li><a ng-click="editPlanet(planetIndex)">Edit</a></li>
+                    <li><a ng-click="movePlanet(planetIndex, planetIndex-1)" ng-hide="planetIndex == 0">Move up</a></li>
+                    <li><a ng-click="movePlanet(planetIndex, planetIndex+1)" ng-hide="planetIndex == player.planets.length - 1">Move down</a></li>
+                    <li><a ng-click="removePlanet(planetIndex)">Remove</a></li>
                 </ul>
             </div>
         </h3>
