@@ -1,4 +1,4 @@
-<div class="col-md-4 col-sm-6 col-xs-12"><div class="panel panel-primary planet-panel">
+<div class="panel panel-primary planet-panel" draggable-planet>
 
     <!-- PLANET HEADING -->
     <div class="panel-heading clearfix">
@@ -12,8 +12,10 @@
                     <span class="glyphicon glyphicon-option-vertical"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#" ng-click="editPlanet($index)" data-toggle="modal" data-target="#editModal">Edit</a></li>
-                    <li><a href="#" ng-click="removePlanet($index)">Remove</a></li>
+                    <li><a href="#" ng-click="editPlanet(planetIndex)">Edit</a></li>
+                    <li><a href="#" ng-click="movePlanet(planetIndex, planetIndex-1)" ng-hide="planetIndex == 0">Move up</a></li>
+                    <li><a href="#" ng-click="movePlanet(planetIndex, planetIndex+1)" ng-hide="planetIndex == player.planets.length - 1">Move down</a></li>
+                    <li><a href="#" ng-click="removePlanet(planetIndex)">Remove</a></li>
                 </ul>
             </div>
         </h3>
@@ -51,7 +53,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-7 col-xs-7">Metal amplifier: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <select class="form-control input-sm" ng-model="planet.metalBonus"
+                    <select class="form-control input-sm" ng-model="planet.metalAmplifier"
                             ng-options="item.value as item.name for item in AMPLIFIER_LIST">
                     </select>
                 </div>
@@ -59,7 +61,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-7 col-xs-7">Crystal amplifier: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <select class="form-control input-sm" ng-model="planet.crystalBonus"
+                    <select class="form-control input-sm" ng-model="planet.crystalAmplifier"
                             ng-options="item.value as item.name for item in AMPLIFIER_LIST">
                     </select>
                 </div>
@@ -67,7 +69,7 @@
             <div class="form-group">
                 <label class="control-label col-sm-7 col-xs-7">Deuterium amplifier: </label>
                 <div class="col-sm-3 col-xs-5">
-                    <select class="form-control input-sm" ng-model="planet.deuteriumBonus"
+                    <select class="form-control input-sm" ng-model="planet.deuteriumAmplifier"
                             ng-options="item.value as item.name for item in AMPLIFIER_LIST">
                     </select>
                 </div>
@@ -92,4 +94,4 @@
         ... <!--This text is for the footer to wrap production spans-->
     </div>
 
-</div></div>
+</div>

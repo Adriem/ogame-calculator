@@ -15,8 +15,8 @@
     <!-- endinject -->
 
     <!-- LIBRARY SCRIPTS -->
-    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </head>
@@ -38,11 +38,6 @@
             <!-- SUMMARY AND GLOBAL PARAMETERS -->
             <global-card></global-card>
 
-            <!-- SHOW CALCULATOR BUTTON -->
-            <!--<div class="col-sm-offset-4 col-sm-4">
-                <button class="btn btn-primary btn-block" disabled>Show calculator</button>
-            </div>-->
-
         </div>
 
         <!-- PLANET LIST -->
@@ -50,14 +45,12 @@
             <legend>Your planets</legend>
 
             <!-- PLANET CARDS -->
-            <div data-ng-repeat="planet in player.planets track by $index">
-                <planet-card></planet-card>
-            </div>
+            <planet-card data-ng-repeat="planet in player.planets track by $index"
+                         class="col-md-4 col-sm-6 col-xs-12"></planet-card>
 
             <!-- ADD PLANET BUTTON -->
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <button class="btn btn-default btn-block"  data-toggle="modal"
-                        data-target="#editModal" ng-click="createPlanet()">
+                <button class="btn btn-default btn-block" ng-click="createPlanet()">
                     Add a planet
                 </button>
             </div>
