@@ -17,6 +17,7 @@
     <!-- LIBRARY SCRIPTS -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </head>
@@ -33,10 +34,11 @@
         </div>
 
         <!-- CONTENT -->
-        <summary></summary>
-        <planet-list></planet-list>
-        <fleet></fleet>
-        <settings></settings>
+        <!-- Using 'ng-include' will break bootstrap's scrollspy, so we will use directives -->
+        <div summary></div>
+        <div planet-list></div>
+        <div fleet-defense></div>
+        <!--<div settings></div>-->
 
     </div>
 

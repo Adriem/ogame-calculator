@@ -63,4 +63,8 @@ module.controller "mainController", ($scope, Planet, AccountLoader) ->
   $scope.removePlanet = (position) ->
     $scope.player.removePlanet(position, 1)
 
+  $scope.clearLocalData = ->
+    localStorage.clear()
+    $scope.player = AccountLoader.loadAccount()
+
   return null

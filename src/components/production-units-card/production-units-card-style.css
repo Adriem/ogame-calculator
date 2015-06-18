@@ -1,0 +1,26 @@
+.production-units-panel > .panel-heading {
+    /*background-color: #44587d;*/
+    background-color: #fff;
+    height: 48px;
+    color: #000;
+}
+
+.production-units-panel .panel-title {
+    line-height: 36px;
+}
+
+.production-units-panel legend {
+    padding-top: 0;
+}
+
+.production-units-panel .panel-body {
+    padding-bottom: 30px;
+}
+
+.corner-link {
+    color: #546eaa !important;
+    font-weight: bold !important;
+    margin-left: 10px;
+    padding-left: 15px;
+    border-left: 1px solid #BBB;
+}
