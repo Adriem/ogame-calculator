@@ -1,0 +1,71 @@
+.navbar-toggle {
+    border:0px;
+}
+
+.navbar-inverse {
+    background-color: #44587d;
+    border-bottom: 1px solid #364768 !important;
+    /*border-color: #364768;*/
+    box-shadow: 0px 0px 10px #364768;
+}
+.navbar-inverse .navbar-brand {
+    color: #CDE;
+}
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #FFF;
+}
+.navbar-inverse .navbar-nav > li > a {
+    color: #CDE;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #FFF;
+}
+
+.navbar-inverse .navbar-nav .active > a, .navbar-inverse .navbar-nav .active > a:hover, .navbar-inverse .navbar-nav .active > a:focus {
+    color: #FFF;
+    background-color: #364768;
+}
+.navbar-inverse .navbar-nav .open > a, .navbar-inverse .navbar-nav .open > a:hover, .navbar-inverse .navbar-nav .open > a:focus {
+    color: #FFF;
+    background-color: #364768;
+}
+.navbar-inverse .navbar-nav .open > a .caret, .navbar-inverse .navbar-nav .open > a:hover .caret, .navbar-inverse .navbar-nav .open > a:focus .caret {
+    border-color: #364768;
+    /*border-top-color: #FFF;
+    border-bottom-color: #FFF;*/
+}
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-color: #364768;
+    /*border-top-color: #CED;
+    border-bottom-color: #CED;*/
+}
+.navbar-inverse .navbar-nav > .dropdown > a:hover .caret, .navbar-inverse .navbar-nav > .dropdown > a:focus .caret {
+    border-color: #364768;
+    /*border-top-color: #FFF;
+    border-bottom-color: #FFF;*/
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #364768;
+}
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+    background-color: #364768;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: #CDE;
+}
+
+.navbar-inverse * {
+    border-color: #364768;
+}
+
+.navbar-collapse * {
+    border-color: #364768;
+}
+
+.navbar-nav span, .navbar-nav li {
+    font-size: 11pt;
+}
+
+.fa-github {
+    font-size: 13pt !important;
+}

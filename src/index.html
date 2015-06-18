@@ -20,45 +20,25 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </head>
-<body data-ng-app="ogameCalculator" data-ng-controller="mainController">
+<body data-ng-app="ogameCalculator" data-ng-controller="mainController"
+      data-spy="scroll" data-target="#scrollSpyTarget" data-offset="70">
 
-    <edit-dialog></edit-dialog>
+    <navbar></navbar>
 
-    <!-- CONTENT -->
-    <div class="container">
+    <div class="container main-container">
 
         <!-- TITLE -->
-        <div class="page-header text-center">
+        <div class="page-header text-center hidden-xs">
             <h1 class="text-center">OGame Resources Calculator [v.BETA]</h1>
         </div>
 
-        <!-- HEADING -->
-        <div class="row">
+        <!-- CONTENT -->
+        <summary></summary>
+        <planet-list></planet-list>
+        <fleet></fleet>
+        <settings></settings>
 
-            <!-- SUMMARY AND GLOBAL PARAMETERS -->
-            <global-card></global-card>
-
-        </div>
-
-        <!-- PLANET LIST -->
-        <fieldset class="row">
-            <legend>Your planets</legend>
-
-            <!-- PLANET CARDS -->
-            <planet-card data-ng-repeat="planet in player.planets track by $index"
-                         class="col-md-4 col-sm-6 col-xs-12"></planet-card>
-
-            <!-- ADD PLANET BUTTON -->
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <button class="btn btn-default btn-block" ng-click="createPlanet()">
-                    Add a planet
-                </button>
-            </div>
-
-        </fieldset>
     </div>
-
-    <footer></footer>
 
     <!-- OWN SCRIPTS -->
     <!-- inject:js -->
