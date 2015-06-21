@@ -4,18 +4,20 @@
         <global-card ></global-card>
 
         <div class="col-sm-4 col-xs-12">
-            <button class="btn btn-default btn-block" ng-click="createPlanet()" disabled>
+            <span class="btn btn-default btn-block file-input btn-file">
                 Import data
-            </button>
+                <file-input ng-model="exchangeData.importFile"></file-input>
+            </span>
         </div>
         <div class="col-sm-4 col-xs-12">
-            <button class="btn btn-default btn-block" ng-click="createPlanet()" disabled>
+            <a class="btn btn-default btn-block"
+               download="OG_Calculator_Export.json" ng-href="{{exchangeData.exportUrl}}">
                 Export data
-            </button>
+            </a>
         </div>
         <div class="col-sm-4 col-xs-12">
             <button class="btn btn-default btn-block" ng-click="clearLocalData()">
-                Clear local data
+                Clear data
             </button>
         </div>
 

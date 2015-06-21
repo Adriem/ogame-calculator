@@ -38,14 +38,19 @@ module.factory 'Account', (Planet) ->
     production
 
   ### STATIC METHOD ###
-  Account.getFromJSON = (jsonObject) ->
-    if jsonObject?
-      out.success "Data loaded successfully"
-      new Account(
-        jsonObject.plasmaLevel,
-        jsonObject.geologist,
-        (Planet.getFromJSON(planet) for planet in jsonObject.planets)
+  Account.getFromTemplate = (templ) ->
+    if templ?
+      account = new Account(
+        templ.plasmaLevel,
+        templ.geologist,
+        if templ.planets?
+          (Planet.getFromTemplate(planet) for planet in templ.planets)
+        else undefined
       )
-    else new Account()
+      out.success "Data loaded successfully"
+    else
+      account = new Account()
+      out.error "Incorrect data input"
+    account
 
   return Account

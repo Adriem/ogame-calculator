@@ -36,20 +36,20 @@ module.factory 'Planet', ->
     Math.round(production)
 
   ### STATIC ###
-  Planet.getFromJSON = (jsonObject) ->
-    if jsonObject?
-      out.success "Planet '#{jsonObject.name}' loaded successfully"
+  Planet.getFromTemplate = (templ) ->
+    if templ?
+      out.success "Planet '#{templ.name}' loaded successfully"
       planet = new Planet(
-        jsonObject.name,
-        jsonObject.coordinates,
-        jsonObject.maxTemp
+        templ.name,
+        templ.coordinates,
+        templ.maxTemp
       )
-      planet.metalMine = jsonObject.metalMine
-      planet.crystalMine = jsonObject.crystalMine
-      planet.deuteriumMine = jsonObject.deuteriumMine
-      planet.metalAmplifier = jsonObject.metalAmplifier
-      planet.crystalAmplifier = jsonObject.crystalAmplifier
-      planet.deuteriumAmplifier = jsonObject.deuteriumAmplifier
+      planet.metalMine = templ.metalMine
+      planet.crystalMine = templ.crystalMine
+      planet.deuteriumMine = templ.deuteriumMine
+      planet.metalAmplifier = templ.metalAmplifier
+      planet.crystalAmplifier = templ.crystalAmplifier
+      planet.deuteriumAmplifier = templ.deuteriumAmplifier
       planet
     else new Planet()
 
