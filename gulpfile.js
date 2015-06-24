@@ -17,6 +17,12 @@ gulp.task("move:img", function(){
         .pipe(gulp.dest("./dist/img"))
 });
 
+/* JSON TASKS */
+gulp.task("move:json", function(){
+    return gulp.src("./src/**/*.json")
+        .pipe(gulp.dest("./dist/"))
+});
+
 /* CSS TASKS */
 gulp.task('clean:css', function (cb) {
     del(['dist/**/*.css'], cb);
@@ -67,14 +73,14 @@ gulp.task("move:html", ["clean:html"], function(){
 });
 
 /* BUILD TASKS */
-gulp.task("build:dev", ["move:html", "move:img", "css", "coffee:dev"], function(){
+gulp.task("build:dev", ["move:html", "move:img", "move:json", "css", "coffee:dev"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
         .pipe(gulp.dest("./dist"))
 });
 
-gulp.task("build", ["move:html", "move:img", "css", "coffee:dist"], function(){
+gulp.task("build", ["move:html", "move:img", "move:json", "css", "coffee:dist"], function(){
     var sources = gulp.src(['./dist/**/*.js', './dist/**/*.css'], {read: false});
     gulp.src("./dist/**/*.html")
         .pipe(inject(sources, {relative: true}))
