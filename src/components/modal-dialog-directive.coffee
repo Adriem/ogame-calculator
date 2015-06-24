@@ -13,7 +13,7 @@ module.directive "closeDialogButton", ->
 module.directive "ngModalDialog", ->
 
   scope =
-    modalId: '@modalId' # One way binding, expression expected
+    modalId: '@modalId'   # One way binding, expression expected
     show: '=modalVisible' # Two way binding, variable name expected
 
   template = """

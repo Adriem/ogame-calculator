@@ -30,20 +30,49 @@
     padding-left: 5px;
 }
 
-.drag-over-greater .panel, .drag-over-lower .panel{
-    -webkit-box-shadow:  0 0 10px #222;
-    -moz-box-shadow:   0 0 10px #222;
-    box-shadow:  0 0 10px #222;
+.drag-over-lower .panel{
+    -webkit-box-shadow: -2px 0 10px #557;
+    -moz-box-shadow: -2px 0 10px #557;
+    box-shadow: -2px 0 10px #557;
+}
+.drag-over-greater .panel{
+    -webkit-box-shadow: 2px 0 10px #557;
+    -moz-box-shadow: 2px 0 10px #557;
+    box-shadow: 2px 0 10px #557;
 }
 
 .drag-over-greater {
-    border-right: 3px solid #3178ee;
+    /*border-right: 3px solid #3178ee;*/
+    padding-left: 12px;
+    border-width: 0;
+    border-right-width: 3px;
+    border-right-style: solid;
+    -webkit-border-image:
+        -webkit-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
+    -moz-border-image:
+        -moz-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
+    -o-border-image:
+        -o-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
 }
 
 .drag-over-lower {
-    border-left: 3px solid #3178ee;
+    /*border-left: 3px solid #3178ee;*/
+    padding-right: 12px;
+    border-width: 0;
+    border-left-width: 3px;
+    border-left-style: solid;
+    -webkit-border-image:
+        -webkit-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
+    -moz-border-image:
+        -moz-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
+    -o-border-image:
+        -o-linear-gradient(rgba(0,0,0,0), #3178ee, #3178ee, #3178ee, rgba(0,0,0,0), rgba(0,0,0,0)) 1 100%;
 }
 
 .dragging {
     opacity: 0.4;
+}
+
+.dropdown-menu {
+    cursor: default !important;
 }

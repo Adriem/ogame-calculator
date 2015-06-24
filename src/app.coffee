@@ -7,7 +7,12 @@ out =
   warning: (string) -> console.log "%c#{string}", "color: #D70;"
   error: (string) -> console.log "%c#{string}", "color: #D00;"
 
-module.controller "mainController", ($scope, Planet, AccountLoader) ->
+module.config ['$compileProvider', ( $compileProvider ) ->
+  # This line marks blob: URLs as safe, otherwise exportation doesn't work
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|blob):/);
+]
+
+module.controller "mainController", ($scope, Planet, Account, AccountLoader) ->
 
   ### CONSTANTS ###
   $scope.AMPLIFIER_LIST = Planet.amplifierList
@@ -20,6 +25,9 @@ module.controller "mainController", ($scope, Planet, AccountLoader) ->
 
   ### DATA ###
   $scope.player = AccountLoader.loadAccount(PLAYER_KEY)
+  $scope.exchangeData =
+    exportUrl: "#"
+    importFile: null
   # Due to some changes in planets' properties, amplifiers may load incorrectly.
   # This is a temporary fix that will prevent the page from crashing
   for planet in $scope.player.planets
@@ -30,7 +38,22 @@ module.controller "mainController", ($scope, Planet, AccountLoader) ->
   ### WATCHERS ###
   $scope.$watch("player", ->
     AccountLoader.storeAccount(PLAYER_KEY, $scope.player)
+    $scope.exchangeData.exportUrl = URL.createObjectURL(new Blob(
+      [JSON.stringify($scope.player)],
+      {type: "application/json"}
+    ))
   , true)
+  $scope.$watch("exchangeData.importFile", ->
+    if $scope.exchangeData.importFile
+      out.debug "Import file changed: '#{$scope.exchangeData.importFile.name}'"
+      reader = new FileReader()
+      reader.onload = (evt) ->
+        $scope.$apply ->
+          json = evt.target.result
+          $scope.player = Account.getFromTemplate(JSON.parse(json))
+      reader.readAsText($scope.exchangeData.importFile)
+    else out.warning "Empty import file!"
+  )
 
   ### FUNCTIONS ###
   $scope.createPlanet = ->
@@ -62,5 +85,9 @@ module.controller "mainController", ($scope, Planet, AccountLoader) ->
 
   $scope.removePlanet = (position) ->
     $scope.player.removePlanet(position, 1)
+
+  $scope.clearLocalData = ->
+    localStorage.clear()
+    $scope.player = AccountLoader.loadAccount()
 
   return null

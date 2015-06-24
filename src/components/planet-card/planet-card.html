@@ -1,4 +1,4 @@
-<div class="panel panel-primary planet-panel" draggable-planet>
+<div class="panel panel-primary planet-panel">
 
     <!-- PLANET HEADING -->
     <div class="panel-heading clearfix">
@@ -13,8 +13,8 @@
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a ng-click="editPlanet(planetIndex)">Edit</a></li>
-                    <li><a ng-click="movePlanet(planetIndex, planetIndex-1)" ng-hide="planetIndex == 0">Move up</a></li>
-                    <li><a ng-click="movePlanet(planetIndex, planetIndex+1)" ng-hide="planetIndex == player.planets.length - 1">Move down</a></li>
+                    <li><a ng-click="movePlanet(planetIndex, planetIndex-1)" ng-hide="$first">Move up</a></li>
+                    <li><a ng-click="movePlanet(planetIndex, planetIndex+1)" ng-hide="$last">Move down</a></li>
                     <li><a ng-click="removePlanet(planetIndex)">Remove</a></li>
                 </ul>
             </div>

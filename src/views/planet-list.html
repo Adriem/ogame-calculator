@@ -1,0 +1,12 @@
+<edit-dialog></edit-dialog>
+
+<section section-id="planets" section-title="Your planets">
+    <planet-card data-ng-repeat="planet in player.planets track by $index"
+                 class="col-md-4 col-sm-6 col-xs-12"></planet-card>
+    <!-- ADD PLANET BUTTON -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <button class="btn btn-default btn-block" ng-click="createPlanet()">
+            Add a planet
+        </button>
+    </div>
+</section>

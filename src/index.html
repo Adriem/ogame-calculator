@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Ogame resources calculator</title>
 
+    <!-- Android webapp settings -->
+    <meta name="theme-color" content="#546eaa"> <!-- Chrome bar color -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes"> <!-- fallback for manifest.json -->
+
+
     <!-- LIBRARY STYLES -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -17,51 +23,33 @@
     <!-- LIBRARY SCRIPTS -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.min.js"></script>
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-route.min.js"></script>-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </head>
-<body data-ng-app="ogameCalculator" data-ng-controller="mainController">
+<body data-ng-app="ogameCalculator" data-ng-controller="mainController"
+      data-spy="scroll" data-target="#scrollSpyTarget" data-offset="70">
 
-    <edit-dialog></edit-dialog>
+    <navbar></navbar>
 
-    <!-- CONTENT -->
-    <div class="container">
+    <div class="container main-container">
 
         <!-- TITLE -->
-        <div class="page-header text-center">
+        <div class="page-header text-center hidden-xs">
             <h1 class="text-center">OGame Resources Calculator [v.BETA]</h1>
         </div>
 
-        <!-- HEADING -->
-        <div class="row">
+        <!-- CONTENT -->
+        <!-- Using 'ng-include' will break bootstrap's scrollspy, so we will use directives -->
+        <summary></summary>
+        <planet-list></planet-list>
+        <fleet-defense></fleet-defense>
 
-            <!-- SUMMARY AND GLOBAL PARAMETERS -->
-            <global-card></global-card>
-
-        </div>
-
-        <!-- PLANET LIST -->
-        <fieldset class="row">
-            <legend>Your planets</legend>
-
-            <!-- PLANET CARDS -->
-            <planet-card data-ng-repeat="planet in player.planets track by $index"
-                         class="col-md-4 col-sm-6 col-xs-12"></planet-card>
-
-            <!-- ADD PLANET BUTTON -->
-            <div class="col-md-4 col-sm-6 col-xs-12">
-                <button class="btn btn-default btn-block" ng-click="createPlanet()">
-                    Add a planet
-                </button>
-            </div>
-
-        </fieldset>
     </div>
-
-    <footer></footer>
 
     <!-- OWN SCRIPTS -->
     <!-- inject:js -->
     <!-- endinject -->
+
 </body>
 </html>
