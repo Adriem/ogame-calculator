@@ -20,7 +20,7 @@ In case you made some modifications to the sources, you'll have to rebuild the p
 In order to run this project, you must follow this steps
 - Set up the project (in case you didn't before)
 - Build the project (in case you have modified the project)
-- `http-server dist` (this step must only be done once per session)
+- `http-server dist -c-1` (this step must only be done once per session)
 - Open your browser and go to `localhost:8080`
 
 Optionally, once the http-server is running, you may compile and run directly with `gulp launch` or `gulp launch:dev`
