@@ -35,4 +35,5 @@ module.directive "globalCard", ->
 
   ### DIRECTIVE RETURN ###
   templateUrl: "components/global-card/global-card.html"
+  scope: true
   link: link

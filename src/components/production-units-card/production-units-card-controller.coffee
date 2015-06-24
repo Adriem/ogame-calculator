@@ -1,8 +1,14 @@
-module.directive "productionUnitsCard", ->
-
-  link = (scope, element, attrs) ->
-    return null # Avoid autoreturn
+module.directive "productionUnitsCard", (Unit) ->
 
   ### DIRECTIVE RETURN ###
   templateUrl: "components/production-units-card/production-units-card.html"
-  link: link
+  scope: true
+  link: (scope, element, attr) ->
+    scope.period = 'hourly'
+    scope.fleet = Unit.fleet
+    scope.defenses = Unit.defenses
+    scope.missile = Unit.missile
+    out.debug "Unit constants"
+    console.log scope.fleet
+    console.log scope.defenses
+    console.log scope.missile

@@ -8,13 +8,13 @@
                 <!--<a href="#fleet" class="pull-right corner-link">RATIO</a>-->
                 <div class="form-group pull-right">
                     <label class="radio-inline">
-                        <input name="production-units-period" type="radio" checked="on">Hourly
+                        <input type="radio" ng-model="period" value="hourly">Hourly
                     </label>
                     <label class="radio-inline">
-                        <input name="production-units-period" type="radio">Daily
+                        <input type="radio" ng-model="period" value="daily">Daily
                     </label>
                     <label class="radio-inline">
-                        <input name="production-units-period" type="radio">Weekly
+                        <input type="radio" ng-model="period" value="weekly">Weekly
                     </label>
                 </div>
             </div>
@@ -24,46 +24,63 @@
     <div class="panel-body">
         <fieldset class="col-sm-6 col-xs-12">
             <legend>Ships</legend>
-            <div class="col-xs-6">
-                <strong>Light fighter: </strong>0<br>
-                <strong>Heavy fighter: </strong>0<br>
-                <strong>Cruiser: </strong>0<br>
-                <strong>Battleship: </strong>0<br>
-                <strong>Battlecruiser: </strong>0<br>
-                <strong>Bomber: </strong>0<br>
-                <strong>Destroyer: </strong>0<br>
-                <strong>Deathstar: </strong>0<br>
+            <div class="col-xs-6 text-center">
+                Light fighter: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.LIGHT_FIGHTER,player,period)}}</strong><br>
+                Heavy fighter: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.HEAVY_FIGHTER,player,period)}}</strong><br>
+                Cruiser: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.CRUISER,player,period)}}</strong><br>
+                Battleship: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.BATTLESHIP,player,period)}}</strong><br>
+                Battlecruiser: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.BATTLECRUISER,player,period)}}</strong><br>
+                Bomber: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.BOMBER,player,period)}}</strong><br>
+                Destroyer: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.DESTROYER,player,period)}}</strong><br>
+                Deathstar: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.DEATHSTAR,player,period)}}</strong><br>
             </div>
-            <div class="col-xs-6">
-                <strong>Small cargo ship: </strong>0<br>
-                <strong>Large cargo ship: </strong>0<br>
-                <strong>Recycler: </strong>0<br>
-                <strong>Colony ship: </strong>0<br>
-                <strong>Espionage probe: </strong>0<br>
-                <strong>Solar Satellite: </strong>0<br>
+            <div class="col-xs-6 text-center">
+                Small cargo ship: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.SMALL_CARGO,player,period)}}</strong><br>
+                Large cargo ship: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.BIG_CARGO,player,period)}}</strong><br>
+                Recycler: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.RECYCLER,player,period)}}</strong><br>
+                Colony ship: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.COLONY_SHIP,player,period)}}</strong><br>
+                Espionage probe: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.ESPIONAGE_PROBE,player,period)}}</strong><br>
+                Solar Satellite: <br class="visible-xs">
+                <strong>{{player.productionCapacity(fleet.SOLAR_SATELLITE,player,period)}}</strong><br>
             </div>
         </fieldset>
         <fieldset class="col-sm-6 col-xs-12">
             <legend>Defenses</legend>
-            <div class="col-xs-6">
-                <strong>Light fighter: </strong>0<br>
-                <strong>Heavy fighter: </strong>0<br>
-                <strong>Cruiser: </strong>0<br>
-                <strong>Battleship: </strong>0<br>
-                <strong>Battlecruiser: </strong>0<br>
-                <strong>Bomber: </strong>0<br>
-                <strong>Destroyer: </strong>0<br>
-                <strong>Deathstar: </strong>0<br>
+            <div class="col-xs-6 text-center">
+                Rocket launcher: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.ROCKET_LAUNCHER,player,period)}}</strong><br>
+                Light laser: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.LIGHT_LASER,player,period)}}</strong><br>
+                Heavy laser: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.HEAVY_LASER,player,period)}}</strong><br>
             </div>
-            <div class="col-xs-6">
-                <strong>Light fighter: </strong>0<br>
-                <strong>Heavy fighter: </strong>0<br>
-                <strong>Cruiser: </strong>0<br>
-                <strong>Battleship: </strong>0<br>
-                <strong>Battlecruiser: </strong>0<br>
-                <strong>Bomber: </strong>0<br>
-                <strong>Destroyer: </strong>0<br>
-                <strong>Deathstar: </strong>0<br>
+            <div class="col-xs-6 text-center">
+                Gauss cannon: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.GAUSS_CANNON,player,period)}}</strong><br>
+                Ion cannon: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.ION_CANNON,player,period)}}</strong><br>
+                Plasma turret: <br class="visible-xs">
+                <strong>{{player.productionCapacity(defenses.PLASMA_TURRET,player,period)}}</strong><br>
+            </div>
+            <legend>Missile</legend>
+            <div class="col-xs-12 text-center">
+                Anti-balistic missile: <br class="visible-xs">
+                <strong>{{player.productionCapacity(missile.ANTI_BALLISTIC,player,period)}}</strong><br>
+                Interplanetary missile: <br class="visible-xs">
+                <strong>{{player.productionCapacity(missile.INTERPLANETARY,player,period)}}</strong><br>
             </div>
         </fieldset>
 
