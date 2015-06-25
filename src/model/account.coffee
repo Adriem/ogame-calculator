@@ -37,21 +37,6 @@ module.factory 'Account', (Planet) ->
       production += planet.getDeuteriumProduction(@plasmaLevel, @geologist)
     production
 
-  Account.prototype.productionCapacity = (unit, player, period) ->
-    period = switch (period)
-      when 'hourly' then 1
-      when 'daily' then 24
-      when 'weekly' then 168 # 7days * 24 hours
-    mProductionCapacity = @getMetalProduction() * period // unit.metalCost
-    cProductionCapacity = @getCrystalProduction() * period // unit.crystalCost
-    # Since deuteriumProduction can be 0 and unit.deuteriumCost can also be 0,
-    # we must avoid deuteriumProduction/unit.deuteriumCost when both are equal
-    # to 0, otherwise NaN will be returned
-    dProductionCapacity =
-      if unit.deuteriumCost is 0 then Infinity # Regardless production
-      else @getDeuteriumProduction() * period // unit.deuteriumCost
-    Math.min(mProductionCapacity, cProductionCapacity, dProductionCapacity)
-
   ### STATIC METHOD ###
   Account.getFromTemplate = (templ) ->
     if templ?

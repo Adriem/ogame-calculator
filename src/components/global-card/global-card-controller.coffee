@@ -14,7 +14,7 @@ module.directive "globalCard", ->
     ### FUNCTIONS ###
     scope.getValue = (production) ->
       if production > scope.M_THRESHOLD && scope.shortenResults
-        production // 1000000
+        production // 10000 / 100
       else if production > scope.K_THRESHOLD && scope.shortenResults
         production // 1000
       else production
