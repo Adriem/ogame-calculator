@@ -6,7 +6,6 @@
             <div class="form-inline">
                 <strong>Production capacity</strong>
                 <!--<a href="#fleet" class="pull-right corner-link">RATIO</a>-->
-
                 <div class="form-group pull-right hidden-xs">
                     <label class="radio-inline" data-ng-repeat="item in period.list">
                         <input type="radio" ng-model="period.selected" ng-attr-value="{{item.value}}">{{item.key}}
@@ -17,21 +16,6 @@
                             ng-options="item.value as item.key for item in period.list">
                     </select>
                 </div>
-
-                <!--<div class="form-group pull-right visible-xs">-->
-                    <!--<label class="radio-inline">-->
-                        <!--<input type="radio" ng-model="period" value="hourly">Hourly-->
-                    <!--</label>-->
-                    <!--<label class="radio-inline">-->
-                        <!--<input type="radio" ng-model="period" value="daily">Daily-->
-                    <!--</label>-->
-                    <!--<label class="radio-inline">-->
-                        <!--<input type="radio" ng-model="period" value="weekly">Weekly-->
-                    <!--</label>-->
-                    <!--<label class="radio-inline">-->
-                        <!--<input type="radio" ng-model="period" value="monthly">Monthly-->
-                    <!--</label>-->
-                <!--</div>-->
             </div>
         </h3>
     </div>
