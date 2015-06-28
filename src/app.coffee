@@ -52,7 +52,7 @@ module.controller "mainController", ($scope, Planet, Account, AccountLoader) ->
           json = evt.target.result
           $scope.player = Account.getFromTemplate(JSON.parse(json))
       reader.readAsText($scope.exchangeData.importFile)
-    else out.warning "Empty import file!"
+    else out.debug "Empty import file!"
   )
 
   ### FUNCTIONS ###

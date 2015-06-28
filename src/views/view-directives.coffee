@@ -10,10 +10,6 @@ module.directive 'planetList', ->
   templateUrl: 'views/planet-list.html'
   scope: false # Use parent's scope
 
-module.directive 'settings', ->
-  templateUrl: 'views/settings.html'
-  scope: false # Use parent's scope
-
 module.directive 'summary', ->
   templateUrl: 'views/summary.html'
   scope: false # Use parent's scope
